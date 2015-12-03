@@ -51,6 +51,7 @@ public enum Color {
 	
 	public static void main(String [] args){
 		System.out.println(Color.WHITE.index + ":" + Color.WHITE.name);
+		System.out.println(Color.BLACK.index + ":" + Color.BLACK.name);
 		System.out.println(Color.RED.toString());
 	}
 	
