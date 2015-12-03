@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>springMVC</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <!-- 配置文件位置，默认为/WEB-INF/applicationContext.xml -->    
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <!-- 
+        <param-value>classpath:spring-mvc.xml</param-value>
+         -->
+         <param-value>/WEB-INF/spring-mvc.xml</param-value>
+    </context-param>
+      
+    <!-- 上下文Spring监听器 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+      
+    <!-- servlet控制跳转,这边默认回去走spring-servlet.xml的xml文件 -->
+    <servlet>
+        <servlet-name>spring</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <!-- 
+            <param-value>classpath:spring-mvc.xml</param-value>
+             -->
+             <param-value>/WEB-INF/spring-mvc.xml</param-value>
+        </init-param>
+    </servlet>
+    <!-- url-pattern 是Spring监听路由过来的方式，然后去寻找匹配的Controller  
+    例如：  
+    <url-pattern>/</url-pattern>  一般是  /hello/say/ 这样的URL方式  
+    <url-pattern>*.htm</url-pattern> 一般是 /hello/say.htm 这样的URL方式  
+     -->   
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+</web-app>
