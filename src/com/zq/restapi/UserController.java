@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zq.dao.User;
@@ -21,20 +22,16 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
-	@RequestMapping("/view")
+	@RequestMapping("/view/login")
 	@ResponseBody
-	public String login(HttpServletRequest request,String name,String password){
+	public String login(HttpServletRequest request,@RequestParam String name,@RequestParam String password){
 		User user = userService.selectByNameAndPassword(name, password);
 		if(user != null){
 			//request.getSession().setAttribute("name", name);
 			return "login_success";
 		}
-		Map map = new HashMap();
+		Map<String,String> map = new HashMap<String,String>();
 		map.put("1", "张三");
-		Set set = map.entrySet();
-		for(Object obj : set){
-			String value = (String) map.get(obj);
-		}
 		
 		return "index";
 	}
