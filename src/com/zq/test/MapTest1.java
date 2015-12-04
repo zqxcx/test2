@@ -1,4 +1,4 @@
-package com.zq.dao;
+package com.zq.test;
 
 import java.util.HashMap;
 import java.util.Map;
