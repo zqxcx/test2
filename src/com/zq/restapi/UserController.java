@@ -31,6 +31,6 @@ public class UserController {
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("1", "张三");
 		
-		return "index";
+		return "index.jsp";
 	}
 }
